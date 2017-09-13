@@ -1,3 +1,12 @@
+#####################################3
+#Notes on merge sort:
+# This sort should run in O(nlogn) time. The logn term comes from the merge_sort
+# routine, which will run logn times, splitting the input in half each time. The
+# merge routine will run in worst case n time, if we take n to be the combined
+# size of the inputs. We're depending on the comparator function being properly
+# implemented for the objects being compared.
+
+
 def merge_sort(a):
     # base case
     if len(a) == 1:
@@ -28,4 +37,3 @@ def merge(a, b):
     return merged
 
 
-print(merge_sort([9,4,7,3,5,8,10,1]))
