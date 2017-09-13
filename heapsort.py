@@ -6,7 +6,11 @@
 import math
 
 def heapsort(a):
-    return heapify(a)
+    heap_sorted = []
+    while a:
+        heapify(a)
+        heap_sorted.append(a.pop(0))
+    return heap_sorted
 
 def heapify(a):
     for i in range(len(a)-1, -1, -1):
@@ -25,8 +29,10 @@ def percolate_down(a, i):
             if a[root_idx] > a[2*root_idx+2]:
                 a[root_idx], a[2*root_idx+2] = a[2*root_idx+2], a[root_idx]
                 root_idx = 2*root_idx+2
-            else: # both children are larger
+            else: # two children, no need to swap
                 root_idx = len(a) # break
+        else: # no children, or only left but no need to swap
+            root_idx = len(a) # break
                 
     return a
 
