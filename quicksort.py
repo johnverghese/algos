@@ -10,25 +10,19 @@
 # way of picking the pivot that can lead to sub-optimal results.
 
 
-def partition(a):
+def quicksort(a):
     ##base case
     if len(a) <= 1:
         return a
         
     pivot_idx = len(a)//2
-    pivot = a.pop(pivot_idx)
+    pivot = a[pivot_idx]
    
-    left, right = [], []
+    left = quicksort([el for el in a if el < pivot])
+    right = quicksort([el for el in a if el > pivot])
+    pivots = [el for el in a if el == pivot]
 
-    for el in a:
-        if el < pivot:
-            left.append(el)
-        else:
-            right.append(el)
+    return left + [pivot] + right
 
-    return partition(left) + [pivot] + partition(right)
-
-def quicksort(a):
-    return partition(a)
     
     
